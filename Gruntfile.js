@@ -1,13 +1,6 @@
-/*!
- * Bootstrap's Gruntfile
- * http://getbootstrap.com
- * Copyright 2013-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
-
+// AdminLTE Gruntfile
 module.exports = function (grunt) {
-  
+
   'use strict';
 
   grunt.initConfig({
@@ -95,19 +88,19 @@ module.exports = function (grunt) {
         }
       }
     },
-    
+
     // Optimize images
     image: {
       dynamic: {
         files: [{
           expand: true,
-          cwd: 'build/img/', 
-          src: ['**/*.{png,jpg,gif,svg}'],
+          cwd: 'build/img/',
+          src: ['**/*.{png,jpg,gif,svg,jpeg}'],
           dest: 'dist/img/'
         }]
       }
     },
-    
+
     // Validate JS code
     jshint: {
       options: {
@@ -123,7 +116,8 @@ module.exports = function (grunt) {
         src: 'dist/js/pages/*.js'
       }
     },
-    
+
+    // Validate CSS files
     csslint: {
       options: {
         csslintrc: 'build/less/.csslintrc'
@@ -132,7 +126,15 @@ module.exports = function (grunt) {
         'dist/css/AdminLTE.css',
       ]
     },
-    
+
+    // Validate Bootstrap HTML
+    bootlint: {
+      options: {
+        relaxerror: ['W005']
+      },
+      files: ['pages/**/*.html', '*.html']
+    },
+
     // Delete images in build directory
     // After compressing the images in the build/img dir, there is no need
     // for them
@@ -159,6 +161,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   // Lint CSS
   grunt.loadNpmTasks('grunt-contrib-csslint');
+  // Lint Bootstrap
+  grunt.loadNpmTasks('grunt-bootlint');
+
+  // Linting task
+  grunt.registerTask('lint', ['jshint', 'csslint', 'bootlint']);
 
   // The default task (running "grunt" in console) is "watch"
   grunt.registerTask('default', ['watch']);

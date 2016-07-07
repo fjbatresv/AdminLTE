@@ -13,7 +13,8 @@
 .skin-purple-light .main-header .navbar .nav > li > a:focus,
 .skin-purple-light .main-header .navbar .nav .open > a,
 .skin-purple-light .main-header .navbar .nav .open > a:hover,
-.skin-purple-light .main-header .navbar .nav .open > a:focus {
+.skin-purple-light .main-header .navbar .nav .open > a:focus,
+.skin-purple-light .main-header .navbar .nav > .active > a {
   background: rgba(0, 0, 0, 0.1);
   color: #f6f6f6;
 }
@@ -122,9 +123,6 @@
   background-color: #fff;
   border: 1px solid transparent;
   height: 35px;
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
 }
 .skin-purple-light .sidebar-form input[type="text"] {
   color: #666;
